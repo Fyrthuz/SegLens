@@ -1,0 +1,68 @@
+{
+  "n_test": 50,
+  "n_samples": 5,
+  "mc_stages": [
+    "dec_blocks.2.target.vmapped",
+    "dec_blocks.1.target.vmapped"
+  ],
+  "stage_attribution": [
+    {
+      "stage": "enc_blocks.0.target.vmapped",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 0.20897436141967773,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "enc_blocks.1.target.vmapped",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 0.0004950138973072171,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "enc_blocks.2.target.vmapped",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 2.0286850485717878e-05,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "enc_blocks.3.target.vmapped",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 2.875364089049981e-06,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "dec_blocks.0.target.vmapped",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 3.160484538966557e-06,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "dec_blocks.1.target.vmapped",
+      "mean_var_features": 59307.17578125,
+      "jacobian_norm_sq": 3.2120081527864386e-07,
+      "contribution_to_logit_var": 0.019049513212811342,
+      "frac_of_attributed_uncertainty": 5.936042209244068e-07
+    },
+    {
+      "stage": "dec_blocks.2.target.vmapped",
+      "mean_var_features": 278280.71875,
+      "jacobian_norm_sq": 0.006190693937242031,
+      "contribution_to_logit_var": 1722.7507584169798,
+      "frac_of_attributed_uncertainty": 0.05368284797478673
+    },
+    {
+      "stage": "out_conv.conv",
+      "mean_var_features": 30368.5,
+      "jacobian_norm_sq": 1.0,
+      "contribution_to_logit_var": 30368.5,
+      "frac_of_attributed_uncertainty": 0.9463165584209924
+    }
+  ],
+  "last_two_frac_sum": 0.9999994063957791,
+  "h2_confirmed": true
+}

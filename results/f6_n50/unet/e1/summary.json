@@ -1,0 +1,25 @@
+{
+  "args": {
+    "data_root": "/home/fyrthuz/Desktop/Codigo_TFM/MRI/filtered_data",
+    "checkpoint": "models/unet_60ep.pth",
+    "output_dir": "results/f6_n50/unet/e1",
+    "method": "mc_dropout",
+    "n_test": 50,
+    "n_calibration": 15,
+    "n_samples": 5,
+    "mc_p": 0.1,
+    "max_pixels_jac": 16,
+    "size": 256,
+    "device": "cuda",
+    "depth_threshold": 0.95,
+    "seed": 42
+  },
+  "n_test": 50,
+  "spearman_rho": 0.09734560247068505,
+  "spearman_pvalue": 0.0,
+  "n_early_pixels": 3275055,
+  "n_late_pixels": 651,
+  "mean_uncertainty_early": 0.17332355678081512,
+  "mean_uncertainty_late": 0.33808082342147827,
+  "h1_confirmed": true
+}
