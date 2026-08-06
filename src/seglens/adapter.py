@@ -242,15 +242,63 @@ class UniVerSegAdapter(_BaseAdapter):
         raise AttributeError("UniVerSegAdapter: no se encontró una cabeza 1x1 explícita")
 
     def set_context(self, images: Tensor, masks: Tensor) -> None:
-        """Guarda el support set para few-shot. (B, N, 1, H, W) o (N, 1, H, W)."""
-        self._context_images = images
-        self._context_masks = masks
+        """Guarda el support set para few-shot.
+
+        Acepta ``(N, 1, H, W)`` o ``(1, N, 1, H, W)`` para imágenes (1 canal)
+        y máscaras. Internamente se almacena como ``(1, N, 1, H, W)``.
+
+        Si la resolución no coincide con ``input_size``, se redimensiona.
+        Para imágenes en color, reproyecta a 1 canal con promedio — esto
+        es lo que hace UniVerSeg internamente.
+        """
+        import torch.nn.functional as F
+
+        # Imágenes → (1, N, 1, H, W)
+        if images.dim() == 3:
+            images = images.unsqueeze(1)
+        if images.dim() == 4 and images.shape[1] != 1:
+            images = images.mean(dim=1, keepdim=True)
+        if images.dim() == 4:
+            images = images.unsqueeze(0)
+        # Resize si hace falta
+        if tuple(images.shape[-2:]) != self.input_size:
+            imgs_flat = images.squeeze(0)  # (N, 1, H, W)
+            imgs_flat = F.interpolate(imgs_flat, size=self.input_size, mode="bilinear", align_corners=False)
+            images = imgs_flat.unsqueeze(0)
+
+        # Máscaras → (1, N, 1, H, W)
+        if masks.dim() == 3:
+            masks = masks.unsqueeze(1)
+        if masks.dim() == 4 and masks.shape[0] != 1 and images.dim() == 5 and masks.shape[0] == images.shape[1]:
+            # (N, 1, H, W) → (1, N, 1, H, W)
+            masks = masks.unsqueeze(0)
+        elif masks.dim() == 4:
+            # ya (1, ?, ?, ?) — debería ser (1, N, H, W), falta canal
+            masks = masks.unsqueeze(2)  # (1, N, 1, H, W)
+        if masks.dim() == 5 and tuple(masks.shape[-2:]) != self.input_size:
+            masks_flat = masks.squeeze(0)  # (N, 1, H, W)
+            masks_flat = F.interpolate(masks_flat, size=self.input_size, mode="nearest")
+            masks = masks_flat.unsqueeze(0)
+
+        # Validación final
+        assert images.shape[0] == 1 and images.shape[2] == 1, \
+            f"images shape {tuple(images.shape)} no es (1, N, 1, H, W)"
+        assert masks.shape[0] == 1 and masks.shape[2] == 1, \
+            f"masks shape {tuple(masks.shape)} no es (1, N, 1, H, W)"
+        assert images.shape[1] == masks.shape[1], \
+            f"N inconsistente: imgs={images.shape[1]} masks={masks.shape[1]}"
+
+        # Mover al dispositivo del modelo si está disponible
+        model_device = next(self._model.parameters(), torch.tensor(0)).device
+        self._context_images = images.to(model_device)
+        self._context_masks = masks.to(model_device)
 
     def segment(self, x: Tensor) -> Tensor:
         if self._context_images is None or self._context_masks is None:
             raise RuntimeError(
                 "UniVerSegAdapter: debes llamar a set_context(images, masks) antes de segmentar"
             )
+        x = self.preprocess(x)
         with torch.no_grad():
             return self._model(x, self._context_images, self._context_masks)
 
