@@ -555,12 +555,46 @@ plot_depth_curves(agg, save_path="depth_curves.png")
 |---|---|---|
 | F0 | ✅ | Adapter protocol + UNetAdapter + UniVerSegAdapter |
 | F1 | ✅ | FeatureExtractor + 3 lentes (logit / tuned / jacobian) |
-| F2 | ✅ | run-depth-curves CLI + curva de profundidad |
+| F2 | ✅ | run-depth-curves CLI + curva de profundidad (con bandas MC) |
 | F3 | ✅ | Conceptos clínicos (T1c) + run-concept-scoring CLI |
-| F4 | ✅ | Intervenciones (ablate / steer / patch) + run-ablation CLI |
+| F4 | ✅ | Intervenciones (ablate / steer / patch) + run-ablation CLI + ΔEntropy |
 | F5 | ✅ | run-universeg-explainability + comparativa UNet vs UniVerSeg |
-| F6 | ⏳ | Integración con incertidumbre (MC Dropout / TTA) |
+| F6 | ✅ | **Incertidumbre**: MC Dropout hook-based, TTA, atribución por stage, correlación depth↔uncertainty |
 | F7 | ⏳ | Visualización cualitativa (heatmaps de conceptos) + redacción |
+
+### F6 — Incertidumbre
+
+Tres comandos CLI nuevos:
+
+```bash
+# E1: correlación píxel-a-píxel entre "decision depth" (J-lens) y entropía
+uv run seglens-uncertainty-link \
+  --data-root ./data/lgg --checkpoint models/unet_real.pth \
+  --method mc_dropout --n-test 30 --n-samples 10 \
+  --output-dir results/uncertainty_link
+# → uncertainty_maps.npy, decision_depth.npy, scatter.png, summary.json
+
+# E2: atribución de varianza por stage (usa el Jacobiano calibrado)
+uv run seglens-stage-uncertainty \
+  --data-root ./data/lgg --checkpoint models/unet_real.pth \
+  --method mc_dropout --n-test 10 --n-samples 10 \
+  --output-dir results/stage_uncertainty
+# → stage_attribution.csv, stage_attribution.png
+
+# E3: extiende seglens-ablation con ΔEntropy
+uv run seglens-ablation \
+  --data-root ./data/lgg --checkpoint models/unet_real.pth \
+  --stages up3 up4 outc --n-uncertainty-samples 5 \
+  --output-dir results/ablation_with_unc
+
+# Bandas de incertidumbre en la curva principal
+uv run seglens-depth-curves --with-uncertainty --n-uncertainty-samples 5 ...
+```
+
+**Hallazgos en el UNet entrenado (Dice 0.66) sobre LGG**:
+- H1 `ρ(depth, uncertainty) > 0`: **FALSA** — correlación **negativa** (píxeles "decididos tarde" tienen menos incertidumbre, son desacuerdos sistemáticos J-lens vs final).
+- H2 últimas etapas concentran >50% de la incertidumbre: **TRUE** — `up4+outc` concentran **96.8%** de la varianza atribuida.
+- Ablación de CAVs en `up4` con `tumor_core` produce **ΔDice = -0.37** (vs 0 en `up3`/`outc`) — la última capa del decoder es donde los CAVs SÍ son causalmente relevantes.
 
 ---
 

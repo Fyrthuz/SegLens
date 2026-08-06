@@ -1,0 +1,92 @@
+{
+  "args": {
+    "data_root": "/home/fyrthuz/Desktop/Codigo_TFM/MRI/filtered_data",
+    "checkpoint": "models/unet_real.pth",
+    "output_dir": "results/stage_uncertainty",
+    "method": "mc_dropout",
+    "n_test": 5,
+    "n_calibration": 3,
+    "n_samples": 5,
+    "mc_p": 0.1,
+    "max_pixels_jac": 8,
+    "size": 128,
+    "device": "cuda",
+    "n_display": 5,
+    "seed": 42
+  },
+  "n_test": 5,
+  "stage_attribution": [
+    {
+      "stage": "inc",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 0.0038426006212830544,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "down1",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 0.00015616716700606048,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "down2",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 2.2686263037030585e-06,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "down3",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 1.0610849443537518e-07,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "down4",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 4.5783718860548106e-07,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "up1",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 1.8879152776207775e-05,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "up2",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 0.0007277637487277389,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "up3",
+      "mean_var_features": 0.1733705699443817,
+      "jacobian_norm_sq": 0.02343357726931572,
+      "contribution_to_logit_var": 0.004062692647016974,
+      "frac_of_attributed_uncertainty": 0.03126743727952607
+    },
+    {
+      "stage": "up4",
+      "mean_var_features": 0.10443556308746338,
+      "jacobian_norm_sq": 0.6948041915893555,
+      "contribution_to_logit_var": 0.07256226698416413,
+      "frac_of_attributed_uncertainty": 0.5584562576874887
+    },
+    {
+      "stage": "outc",
+      "mean_var_features": 0.05330870300531387,
+      "jacobian_norm_sq": 1.0,
+      "contribution_to_logit_var": 0.05330870300531387,
+      "frac_of_attributed_uncertainty": 0.4102763050252889
+    }
+  ],
+  "mean_pred_variance": 0.053308699280023575,
+  "h2_confirmed": false
+}

@@ -69,6 +69,8 @@ seglens-depth-curves = "seglens.cli.run_depth_curves:main"
 seglens-concept-scoring = "seglens.cli.run_concept_scoring:main"
 seglens-ablation = "seglens.cli.run_ablation:main"
 seglens-smoke = "seglens.examples.smoke_unet:main"
+seglens-uncertainty-link = "seglens.cli.run_uncertainty_link:main"
+seglens-stage-uncertainty = "seglens.cli.run_stage_uncertainty:main"
 
 [project.urls]
 Homepage = "https://github.com/Fyrthuz/SegLens"

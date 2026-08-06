@@ -71,6 +71,16 @@ class TestUNetAdapter:
         out = a.preprocess(x)
         assert torch.equal(out, x)
 
+    def test_uncertainty_method_runs(self):
+        m = UNet(in_channels=3, out_channels=1, init_features=8)
+        a = UNetAdapter(m).eval()
+        x = torch.randn(1, 3, 32, 32)
+        out = a.uncertainty(x, method="noisy", n_samples=3)
+        assert "mean" in out
+        assert out["mean"].shape == (1, 1, 32, 32)
+        assert out["std"].shape == (1, 1, 32, 32)
+        assert "entropy" in out
+
 
 class TestUniVerSegAdapterDiscovery:
     def test_discover_stages_with_typical_universeg(self):

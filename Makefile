@@ -1,4 +1,4 @@
-.PHONY: help install sync dev test lint run-smoke train-unet run-universeg download-data clean
+.PHONY: help install sync dev test lint run-smoke train-unet run-universeg download-data clean uncertainty-link stage-uncertainty
 
 PYTHON ?= uv run python
 SEGLENS ?= uv run
@@ -37,6 +37,12 @@ run-universeg:
 
 download-data:
 	$(SEGLENS) seglens-download-data --raw ./data/lgg_raw --filtered ./data/lgg
+
+uncertainty-link:
+	$(SEGLENS) seglens-uncertainty-link --data-root ./data/lgg --checkpoint ./models/unet_real.pth --output-dir ./results/uncertainty_link
+
+stage-uncertainty:
+	$(SEGLENS) seglens-stage-uncertainty --data-root ./data/lgg --checkpoint ./models/unet_real.pth --output-dir ./results/stage_uncertainty
 
 clean:
 	rm -rf .venv .pytest_cache dist build src/*.egg-info src/seglens.egg-info

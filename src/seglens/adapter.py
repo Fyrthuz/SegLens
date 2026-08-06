@@ -38,12 +38,11 @@ class SegmentationAdapter(Protocol):
     head() -> nn.Module
         Devuelve la cabeza 1×1 final (el "unembedding" del modelo).
     features(x) -> dict[str, Tensor]
-        Devuelve las features de cada etapa durante un forward. Si el modelo
-        está en modo ``train``, se ejecuta en ``no_grad`` salvo que el
-        llamador indique lo contrario.
+        Devuelve las features de cada etapa durante un forward.
     preprocess(x) -> Tensor
-        Preprocesa la entrada al formato esperado por el modelo (resize,
-        grayscale, normalización). El Adapter debe ser idempotente.
+        Preprocesa la entrada al formato esperado por el modelo.
+    uncertainty(x, method, n_samples) -> dict
+        Opcional. Devuelve ``{mean, std, var, entropy}`` cada uno ``(B, K, H, W)``.
     """
 
     name: str
@@ -54,6 +53,7 @@ class SegmentationAdapter(Protocol):
     def head(self) -> nn.Module: ...
     def features(self, x: Tensor) -> dict[str, Tensor]: ...
     def preprocess(self, x: Tensor) -> Tensor: ...
+    def uncertainty(self, x: Tensor, method: str = "mc_dropout", n_samples: int = 10) -> dict: ...
 
 
 class _BaseAdapter:
@@ -96,6 +96,25 @@ class _BaseAdapter:
 
     def preprocess(self, x: Tensor) -> Tensor:
         return x
+
+    def uncertainty(
+        self,
+        x: Tensor,
+        method: str = "mc_dropout",
+        n_samples: int = 10,
+    ) -> dict:
+        """Cuantificación de incertidumbre agnóstica del modelo.
+
+        Devuelve ``{mean, std, var, entropy, predictions}`` cada uno
+        ``(B, K, H, W)`` (las predicciones tienen dim extra N).
+        """
+        from seglens.uncertainty import UncertaintyEstimator
+        est = UncertaintyEstimator(
+            self,
+            n_samples=n_samples,
+            device=str(next(self._model.parameters()).device),
+        )
+        return est.uncertainty_map(x, method=method)
 
     def eval(self) -> "_BaseAdapter":
         self._model.eval()

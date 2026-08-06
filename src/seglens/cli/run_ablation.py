@@ -27,8 +27,12 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--strength", type=float, default=1.0)
     p.add_argument("--n-random-controls", type=int, default=5)
+    p.add_argument("--n-uncertainty-samples", type=int, default=0,
+                   help="Si > 0, calcula ΔEntropy usando MC Dropout.")
     p.add_argument("--stages", type=str, nargs="+", default=None,
                    help="Subset de stages a ablacionar (default: todos).")
+    p.add_argument("--train-ratio", type=float, default=0.70)
+    p.add_argument("--val-ratio", type=float, default=0.15)
     return p.parse_args()
 
 
@@ -38,7 +42,7 @@ def main() -> None:
 
     base_ds = LGGSegmentationDataset(str(args.data_root), size=(args.size, args.size))
     train_idx, val_idx, test_idx = split_by_patient(
-        base_ds.patient_ids, train_ratio=0.70, val_ratio=0.15, seed=args.seed
+        base_ds.patient_ids, train_ratio=args.train_ratio, val_ratio=args.val_ratio, seed=args.seed
     )
     calib_idx = train_idx[: args.n_calibration]
     if args.n_test < len(test_idx):
@@ -58,7 +62,9 @@ def main() -> None:
     print(f"[ablation] Ablacionando {len(cavs)} stages × {len(next(iter(cavs.values())))} concepts…")
     results = run_ablation(
         adapter, cavs, test_loader,
-        device=args.device, strength=args.strength, n_random_controls=args.n_random_controls
+        device=args.device, strength=args.strength,
+        n_random_controls=args.n_random_controls,
+        n_uncertainty_samples=args.n_uncertainty_samples,
     )
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -71,8 +77,12 @@ def main() -> None:
         })
     out_path = args.output_dir / "ablation.csv"
     import csv
+    # Determinar fieldnames en función de si hay entropy
+    fieldnames = ["stage", "concept", "clean_dice", "ablated_dice", "delta_dice", "n_images", "random_delta_dice"]
+    if args.n_uncertainty_samples > 0 and "clean_entropy" in out[0]:
+        fieldnames += ["clean_entropy", "ablated_entropy", "delta_entropy", "random_delta_entropy"]
     with out_path.open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["stage", "concept", "clean_dice", "ablated_dice", "delta_dice", "n_images", "random_delta_dice"])
+        w = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         w.writeheader()
         for row in out:
             w.writerow(row)
