@@ -1,0 +1,29 @@
+{
+  "args": {
+    "data_root": "/home/fyrthuz/Desktop/Codigo_TFM/MRI/filtered_data",
+    "output_dir": "results/universeg_explainability",
+    "context_size": 64,
+    "channel": "g",
+    "n_test": 12,
+    "n_calibration": 8,
+    "input_size": 128,
+    "device": "cuda",
+    "seed": 42,
+    "stages": [
+      "enc_blocks.0.target.vmapped",
+      "enc_blocks.1.target.vmapped",
+      "enc_blocks.2.target.vmapped",
+      "enc_blocks.3.target.vmapped",
+      "dec_blocks.0.target.vmapped",
+      "dec_blocks.1.target.vmapped",
+      "dec_blocks.2.target.vmapped",
+      "out_conv.conv"
+    ],
+    "max_pixels_jac": 16,
+    "n_random_controls": 3
+  },
+  "n_test": 12,
+  "n_calibration": 8,
+  "context_size": 64,
+  "channel": "g"
+}

@@ -55,7 +55,7 @@ def run_ablation(
                     y = y.unsqueeze(1)
 
                 # 1) clean
-                clean_y = adapter.model(x)
+                clean_y = adapter.segment(x)
                 for b in range(x.shape[0]):
                     clean_scores.append(dice_score(clean_y[b], y[b]))
 
@@ -72,7 +72,7 @@ def run_ablation(
                     make_hook(stage, cav, strength)
                 )
                 try:
-                    ablated_y = adapter.model(x)
+                    ablated_y = adapter.segment(x)
                 finally:
                     handle.remove()
                 for b in range(x.shape[0]):
@@ -92,7 +92,7 @@ def run_ablation(
                         make_hook_r(stage, r_dir)
                     )
                     try:
-                        rand_y = adapter.model(x)
+                        rand_y = adapter.segment(x)
                     finally:
                         handle_r.remove()
                     for b in range(x.shape[0]):

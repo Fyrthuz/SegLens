@@ -1,0 +1,17 @@
+stage,concept,clean_dice,ablated_dice,delta_dice,random_delta_mean
+dec_blocks.0.target.vmapped,tumor_core,0.7727427187444024,0.7727427187444024,0.0,0.0
+dec_blocks.0.target.vmapped,tumor_periphery,0.7727427187444024,0.7727427187444024,0.0,0.0
+dec_blocks.0.target.vmapped,ventricle_csf,0.7727427187444024,0.7727427187444024,0.0,0.0
+dec_blocks.0.target.vmapped,normal_white_matter,0.7727427187444024,0.7727427187444024,0.0,0.0
+dec_blocks.1.target.vmapped,tumor_core,0.7727427187444024,0.7727427187444024,0.0,0.0
+dec_blocks.1.target.vmapped,tumor_periphery,0.7727427187444024,0.7727427187444024,0.0,0.0
+dec_blocks.1.target.vmapped,ventricle_csf,0.7727427187444024,0.7727427187444024,0.0,0.0
+dec_blocks.1.target.vmapped,normal_white_matter,0.7727427187444024,0.7727427187444024,0.0,0.0
+dec_blocks.2.target.vmapped,tumor_core,0.7727427187444024,0.7727427187444024,0.0,0.0
+dec_blocks.2.target.vmapped,tumor_periphery,0.7727427187444024,0.7727427187444024,0.0,0.0
+dec_blocks.2.target.vmapped,ventricle_csf,0.7727427187444024,0.7727427187444024,0.0,0.0
+dec_blocks.2.target.vmapped,normal_white_matter,0.7727427187444024,0.7727427187444024,0.0,0.0
+out_conv.conv,tumor_core,0.7727427187444024,0.7727427187444024,0.0,0.0
+out_conv.conv,tumor_periphery,0.7727427187444024,0.7727427187444024,0.0,0.0
+out_conv.conv,ventricle_csf,0.7727427187444024,0.7727427187444024,0.0,0.0
+out_conv.conv,normal_white_matter,0.7727427187444024,0.7727427187444024,0.0,0.0

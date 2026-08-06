@@ -39,7 +39,7 @@ def run_depth_curves(
             if y.dim() == 3:
                 y = y.unsqueeze(1)
             with FeatureExtractor(adapter.model, adapter.stages) as ex:
-                _ = adapter.model(x)
+                _ = adapter.segment(x)
             feats = ex.features
             img_results: dict[str, dict[str, LensOutput | None]] = {}
             for lens_name, lens in lenses.items():

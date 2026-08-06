@@ -66,7 +66,7 @@ def fit_concepts(
         if take < b:
             x, m = x[:take], m[:take]
         with FeatureExtractor(adapter.model, adapter.stages) as ex:
-            _ = adapter.model(x)
+            _ = adapter.segment(x)
         feats = ex.features
         concept_masks = derive_concept_masks(x, m, thresholds, t1c_channel=1)
         for stage in adapter.stages:
@@ -100,7 +100,7 @@ def score_concepts_on_test(
             break
         x = adapter.preprocess(batch[0]).to(device)
         with FeatureExtractor(adapter.model, adapter.stages) as ex:
-            _ = adapter.model(x)
+            _ = adapter.segment(x)
         feats = ex.features
         for stage in adapter.stages:
             scores = concept_scores(feats[stage], cavs[stage])
