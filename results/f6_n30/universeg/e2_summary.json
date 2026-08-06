@@ -1,0 +1,68 @@
+{
+  "n_test": 30,
+  "n_samples": 5,
+  "mc_stages": [
+    "dec_blocks.2.target.vmapped",
+    "dec_blocks.1.target.vmapped"
+  ],
+  "stage_attribution": [
+    {
+      "stage": "enc_blocks.0.target.vmapped",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 0.1973399519920349,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "enc_blocks.1.target.vmapped",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 0.0004797691653948277,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "enc_blocks.2.target.vmapped",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 1.9526647520251572e-05,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "enc_blocks.3.target.vmapped",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 2.8833603664679686e-06,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "dec_blocks.0.target.vmapped",
+      "mean_var_features": 0.0,
+      "jacobian_norm_sq": 3.187334414178622e-06,
+      "contribution_to_logit_var": 0.0,
+      "frac_of_attributed_uncertainty": 0.0
+    },
+    {
+      "stage": "dec_blocks.1.target.vmapped",
+      "mean_var_features": 50467.30859375,
+      "jacobian_norm_sq": 3.212008437003533e-07,
+      "contribution_to_logit_var": 0.01621014209959859,
+      "frac_of_attributed_uncertainty": 3.832342851182097e-05
+    },
+    {
+      "stage": "dec_blocks.2.target.vmapped",
+      "mean_var_features": 22863.55078125,
+      "jacobian_norm_sq": 0.006190693937242031,
+      "contribution_to_logit_var": 141.54124520530968,
+      "frac_of_attributed_uncertainty": 0.33462666513170974
+    },
+    {
+      "stage": "out_conv.conv",
+      "mean_var_features": 281.42510986328125,
+      "jacobian_norm_sq": 1.0,
+      "contribution_to_logit_var": 281.42510986328125,
+      "frac_of_attributed_uncertainty": 0.6653350114397759
+    }
+  ],
+  "last_two_frac_sum": 0.9999616765714856,
+  "h2_confirmed": true
+}

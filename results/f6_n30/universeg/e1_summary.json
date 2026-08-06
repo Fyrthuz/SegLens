@@ -1,0 +1,13 @@
+{
+  "method": "mc_dropout",
+  "n_test": 30,
+  "n_samples": 5,
+  "spearman_rho": 0.29755243080370375,
+  "spearman_pvalue": 0.0,
+  "n_early_pixels": 490056,
+  "n_late_pixels": 739,
+  "mean_uncertainty_early": 0.05069137364625931,
+  "mean_uncertainty_late": 0.27180543541908264,
+  "mean_test_dice": 0.7184126583821634,
+  "h1_confirmed": true
+}

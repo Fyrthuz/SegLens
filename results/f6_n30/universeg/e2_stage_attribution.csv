@@ -1,0 +1,9 @@
+stage,mean_var_features,jacobian_norm_sq,contribution_to_logit_var,frac_of_attributed_uncertainty
+enc_blocks.0.target.vmapped,0.0,0.1973399519920349,0.0,0.0
+enc_blocks.1.target.vmapped,0.0,0.0004797691653948277,0.0,0.0
+enc_blocks.2.target.vmapped,0.0,1.9526647520251572e-05,0.0,0.0
+enc_blocks.3.target.vmapped,0.0,2.8833603664679686e-06,0.0,0.0
+dec_blocks.0.target.vmapped,0.0,3.187334414178622e-06,0.0,0.0
+dec_blocks.1.target.vmapped,50467.30859375,3.212008437003533e-07,0.01621014209959859,3.832342851182097e-05
+dec_blocks.2.target.vmapped,22863.55078125,0.006190693937242031,141.54124520530968,0.33462666513170974
+out_conv.conv,281.42510986328125,1.0,281.42510986328125,0.6653350114397759
