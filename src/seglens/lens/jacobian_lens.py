@@ -215,7 +215,7 @@ class JacobianLens:
     def __call__(self, stage: str, features: Tensor) -> LensOutput:
         if stage not in self._jacobians:
             raise KeyError(f"JacobianLens sin Jacobiano calibrado para stage '{stage}'")
-        jac = self._jacobians[stage].weight  # (K, C_l)
+        jac = self._jacobians[stage].weight.to(features.device)  # (K, C_l)
         B, C, H, W = features.shape
         flat = features.permute(0, 2, 3, 1).reshape(-1, C)
         out = flat @ jac.T  # (B*H*W, K)

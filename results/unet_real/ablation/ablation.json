@@ -1,0 +1,284 @@
+{
+  "args": {
+    "data_root": "/home/fyrthuz/Desktop/Codigo_TFM/MRI/filtered_data",
+    "checkpoint": "models/unet_real.pth",
+    "output_dir": "results/unet_real/ablation",
+    "n_calibration": 20,
+    "n_test": 10,
+    "device": "cuda",
+    "size": 256,
+    "seed": 42,
+    "strength": 1.0,
+    "n_random_controls": 3,
+    "stages": [
+      "up1",
+      "up2",
+      "up3",
+      "up4",
+      "outc"
+    ]
+  },
+  "n_results": 20,
+  "results": [
+    {
+      "stage": "up1",
+      "concept": "tumor_core",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up1",
+      "concept": "tumor_periphery",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up1",
+      "concept": "ventricle_csf",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up1",
+      "concept": "normal_white_matter",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up2",
+      "concept": "tumor_core",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up2",
+      "concept": "tumor_periphery",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up2",
+      "concept": "ventricle_csf",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up2",
+      "concept": "normal_white_matter",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up3",
+      "concept": "tumor_core",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up3",
+      "concept": "tumor_periphery",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up3",
+      "concept": "ventricle_csf",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up3",
+      "concept": "normal_white_matter",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up4",
+      "concept": "tumor_core",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up4",
+      "concept": "tumor_periphery",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up4",
+      "concept": "ventricle_csf",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "up4",
+      "concept": "normal_white_matter",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "outc",
+      "concept": "tumor_core",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "outc",
+      "concept": "tumor_periphery",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "outc",
+      "concept": "ventricle_csf",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    },
+    {
+      "stage": "outc",
+      "concept": "normal_white_matter",
+      "clean_dice": 0.5227156883715575,
+      "ablated_dice": 0.5227156883715575,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_images": 10
+    }
+  ]
+}

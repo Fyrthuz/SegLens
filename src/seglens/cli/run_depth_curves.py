@@ -51,7 +51,14 @@ def main() -> None:
     # Calibración
     calib_loader = DataLoader(Subset(base_ds, calib_idx), batch_size=args.batch_size)
     print("[depth-curves] Calibrando lentes…")
-    lenses = calibrate_lenses(adapter, calib_loader, n_images=args.n_calibration, device=args.device)
+    # El J-lens itera por píxel — sub-muestreamos para evitar OOM en GPU
+    import os
+    os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
+    torch.cuda.empty_cache() if torch.cuda.is_available() else None
+    lenses = calibrate_lenses(
+        adapter, calib_loader, n_images=args.n_calibration, device=args.device,
+        max_pixels_per_image=32,
+    )
 
     # Curva de profundidad
     test_loader = DataLoader(Subset(base_ds, test_idx), batch_size=args.batch_size)

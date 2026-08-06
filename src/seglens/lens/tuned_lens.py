@@ -99,6 +99,9 @@ class TunedLens:
         if stage not in self._probes:
             raise KeyError(f"TunedLens sin probe entrenada para stage '{stage}'")
         probe = self._probes[stage]
+        # Mover probe al device de las features
+        weight = probe.weight.to(features.device)
+        bias = probe.bias.to(features.device) if probe.bias is not None else None
         # Upsample a target_hw
         if tuple(features.shape[-2:]) != self.target_hw:
             features = F.interpolate(
@@ -106,9 +109,9 @@ class TunedLens:
             )
         B, C, H, W = features.shape
         flat = features.permute(0, 2, 3, 1).reshape(-1, C)  # (B*H*W, C)
-        out = flat @ probe.weight.T  # (B*H*W, K)
-        if probe.bias is not None:
-            out = out + probe.bias
+        out = flat @ weight.T  # (B*H*W, K)
+        if bias is not None:
+            out = out + bias
         K = out.shape[-1]
         logits = out.reshape(B, H, W, K).permute(0, 3, 1, 2).contiguous()  # (B,K,H,W)
         return LensOutput(logits=logits, stage=stage, lens=self.name, extra={})

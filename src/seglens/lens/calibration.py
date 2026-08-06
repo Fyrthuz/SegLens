@@ -44,6 +44,7 @@ def run_calibration(
     dataloader: DataLoader,
     n_images: int = 200,
     device: str = "cpu",
+    max_pixels_per_image: int | None = 64,
 ):
     """Calibra las 3 lentes y devuelve ``{"logit", "tuned", "jacobian"}``."""
     adapter.model.to(device).eval()
@@ -92,6 +93,10 @@ def run_calibration(
 
     # 3) Jacobian lens
     jacobian = JacobianLens(target_hw=target_hw, out_channels=out_channels)
-    jacobian.calibrate(adapter, dataloader, n_images=n_images, device=device)
+    jacobian.calibrate(
+        adapter, dataloader,
+        n_images=n_images, device=device,
+        max_pixels_per_image=max_pixels_per_image,
+    )
 
     return {"logit": logit, "tuned": tuned, "jacobian": jacobian}

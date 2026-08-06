@@ -77,7 +77,7 @@ def main() -> None:
         for row in out:
             w.writerow(row)
     summary = {
-        "args": vars(args),
+        "args": {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()},
         "n_results": len(out),
         "results": out,
     }

@@ -55,7 +55,7 @@ def main() -> None:
     torch.save({"scores": scores, "cavs": cavs, "thresholds": thresholds.fg_percentiles.tolist()}, args.output_dir / "concept_scores.pt")
     # Resumen JSON
     summary = {
-        "args": vars(args),
+        "args": {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()},
         "n_stages": len(scores),
         "n_concepts": len(next(iter(scores.values()))) if scores else 0,
         "n_test": args.n_test,
