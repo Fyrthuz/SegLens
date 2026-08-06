@@ -71,6 +71,7 @@ seglens-ablation = "seglens.cli.run_ablation:main"
 seglens-smoke = "seglens.examples.smoke_unet:main"
 seglens-uncertainty-link = "seglens.cli.run_uncertainty_link:main"
 seglens-stage-uncertainty = "seglens.cli.run_stage_uncertainty:main"
+seglens-run-universeg-uncertainty = "seglens.cli.run_universeg_uncertainty:main"
 
 [project.urls]
 Homepage = "https://github.com/Fyrthuz/SegLens"

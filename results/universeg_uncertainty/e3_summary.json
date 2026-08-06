@@ -1,0 +1,239 @@
+{
+  "n_test": 8,
+  "n_uncertainty_samples": 3,
+  "ablation_stages": [
+    "dec_blocks.1.target.vmapped",
+    "dec_blocks.2.target.vmapped",
+    "out_conv.conv"
+  ],
+  "results": [
+    {
+      "stage": "dec_blocks.1.target.vmapped",
+      "concept": "tumor_core",
+      "clean_dice": 0.5766505773640551,
+      "ablated_dice": 0.5766505773640551,
+      "delta_dice": 0.0,
+      "random_delta_dice": [
+        -0.00040010111007915405,
+        -0.0001491150276362596
+      ],
+      "n_images": 8,
+      "clean_entropy": 0.09169969512731768,
+      "ablated_entropy": 0.09159118961542845,
+      "delta_entropy": -0.00010850551188923419,
+      "random_delta_entropy": [
+        0.00023068813607096672,
+        0.00016009181854315102
+      ]
+    },
+    {
+      "stage": "dec_blocks.1.target.vmapped",
+      "concept": "tumor_periphery",
+      "clean_dice": 0.5766505773640551,
+      "ablated_dice": 0.5779967698681118,
+      "delta_dice": 0.0013461925040566536,
+      "random_delta_dice": [
+        -0.0011120874136963943,
+        -0.0008895689330735701
+      ],
+      "n_images": 8,
+      "clean_entropy": 0.0917446338571608,
+      "ablated_entropy": 0.09148504404583946,
+      "delta_entropy": -0.00025958981132134795,
+      "random_delta_entropy": [
+        1.0660442057996988e-05,
+        -0.00012956408318132162
+      ]
+    },
+    {
+      "stage": "dec_blocks.1.target.vmapped",
+      "concept": "ventricle_csf",
+      "clean_dice": 0.5766505773640551,
+      "ablated_dice": 0.5798478741286388,
+      "delta_dice": 0.0031972967645836903,
+      "random_delta_dice": [
+        6.751744674904359e-06,
+        0.0005782075163425215
+      ],
+      "n_images": 8,
+      "clean_entropy": 0.09194828479667194,
+      "ablated_entropy": 0.09200161520857364,
+      "delta_entropy": 5.3330411901697516e-05,
+      "random_delta_entropy": [
+        -6.948484224267304e-05,
+        -5.016365321353078e-05
+      ]
+    },
+    {
+      "stage": "dec_blocks.1.target.vmapped",
+      "concept": "normal_white_matter",
+      "clean_dice": 0.5766505773640551,
+      "ablated_dice": 0.5798140944188249,
+      "delta_dice": 0.0031635170547698044,
+      "random_delta_dice": [
+        0.0001645167374659806,
+        0.0001394175092710448
+      ],
+      "n_images": 8,
+      "clean_entropy": 0.09180510730948299,
+      "ablated_entropy": 0.09193739847978577,
+      "delta_entropy": 0.00013229117030277848,
+      "random_delta_entropy": [
+        4.5973341912031174e-05,
+        0.00017151422798633575
+      ]
+    },
+    {
+      "stage": "dec_blocks.2.target.vmapped",
+      "concept": "tumor_core",
+      "clean_dice": 0.5766505773640551,
+      "ablated_dice": 0.07344120967756708,
+      "delta_dice": -0.503209367686488,
+      "random_delta_dice": [
+        0.0018303940759709647,
+        -0.013862926869167458
+      ],
+      "n_images": 8,
+      "clean_entropy": 0.09193161013536155,
+      "ablated_entropy": 0.0918886904255487,
+      "delta_entropy": -4.291970981284976e-05,
+      "random_delta_entropy": [
+        -6.158993346616626e-05,
+        -9.436812251806259e-05
+      ]
+    },
+    {
+      "stage": "dec_blocks.2.target.vmapped",
+      "concept": "tumor_periphery",
+      "clean_dice": 0.5766505773640551,
+      "ablated_dice": 0.06754992314620875,
+      "delta_dice": -0.5091006542178463,
+      "random_delta_dice": [
+        -0.01720244314096031,
+        0.00020504537452870064
+      ],
+      "n_images": 8,
+      "clean_entropy": 0.09186081710504368,
+      "ablated_entropy": 0.09194800909608603,
+      "delta_entropy": 8.719199104234576e-05,
+      "random_delta_entropy": [
+        -2.1722924429923296e-05,
+        1.7049664165824652e-05
+      ]
+    },
+    {
+      "stage": "dec_blocks.2.target.vmapped",
+      "concept": "ventricle_csf",
+      "clean_dice": 0.5766505773640551,
+      "ablated_dice": 0.5741202374696952,
+      "delta_dice": -0.002530339894359912,
+      "random_delta_dice": [
+        0.0008542052018045698,
+        0.00016074838703461491
+      ],
+      "n_images": 8,
+      "clean_entropy": 0.09168953762855381,
+      "ablated_entropy": 0.09199390950379893,
+      "delta_entropy": 0.0003043718752451241,
+      "random_delta_entropy": [
+        -2.0270294044166803e-05,
+        0.0001750196097418666
+      ]
+    },
+    {
+      "stage": "dec_blocks.2.target.vmapped",
+      "concept": "normal_white_matter",
+      "clean_dice": 0.5766505773640551,
+      "ablated_dice": 0.5708064943848429,
+      "delta_dice": -0.0058440829792122395,
+      "random_delta_dice": [
+        0.0018255314572568349,
+        0.0035586683429250643
+      ],
+      "n_images": 8,
+      "clean_entropy": 0.0918238575104624,
+      "ablated_entropy": 0.09208632376976311,
+      "delta_entropy": 0.00026246625930070877,
+      "random_delta_entropy": [
+        -4.3206673581153154e-05,
+        0.0001055230968631804
+      ]
+    },
+    {
+      "stage": "out_conv.conv",
+      "concept": "tumor_core",
+      "clean_dice": 0.5766505773640551,
+      "ablated_dice": 0.0,
+      "delta_dice": -0.5766505773640551,
+      "random_delta_dice": [
+        -0.5766505773640551,
+        -0.5766505773640551
+      ],
+      "n_images": 8,
+      "clean_entropy": 0.09181554499082267,
+      "ablated_entropy": 0.09188299387460575,
+      "delta_entropy": 6.744888378307223e-05,
+      "random_delta_entropy": [
+        -0.0003150015836581588,
+        0.00014570809435099363
+      ]
+    },
+    {
+      "stage": "out_conv.conv",
+      "concept": "tumor_periphery",
+      "clean_dice": 0.5766505773640551,
+      "ablated_dice": 0.0,
+      "delta_dice": -0.5766505773640551,
+      "random_delta_dice": [
+        -0.5766505773640551,
+        -0.5766505773640551
+      ],
+      "n_images": 8,
+      "clean_entropy": 0.09182139619952068,
+      "ablated_entropy": 0.09160336549393833,
+      "delta_entropy": -0.0002180307055823505,
+      "random_delta_entropy": [
+        0.00021624815417453647,
+        -0.0001271029468625784
+      ]
+    },
+    {
+      "stage": "out_conv.conv",
+      "concept": "ventricle_csf",
+      "clean_dice": 0.5766505773640551,
+      "ablated_dice": 0.0,
+      "delta_dice": -0.5766505773640551,
+      "random_delta_dice": [
+        -0.5766505773640551,
+        -0.5766505773640551
+      ],
+      "n_images": 8,
+      "clean_entropy": 0.09202004777034745,
+      "ablated_entropy": 0.09190153732197359,
+      "delta_entropy": -0.00011851044837385416,
+      "random_delta_entropy": [
+        -0.0004615381476469338,
+        6.684748223051429e-05
+      ]
+    },
+    {
+      "stage": "out_conv.conv",
+      "concept": "normal_white_matter",
+      "clean_dice": 0.5766505773640551,
+      "ablated_dice": 0.0,
+      "delta_dice": -0.5766505773640551,
+      "random_delta_dice": [
+        -0.5766505773640551,
+        -0.5766505773640551
+      ],
+      "n_images": 8,
+      "clean_entropy": 0.09190904581919312,
+      "ablated_entropy": 0.09163878505933098,
+      "delta_entropy": -0.0002702607598621398,
+      "random_delta_entropy": [
+        5.144102033227682e-06,
+        8.806164260022342e-05
+      ]
+    }
+  ]
+}
