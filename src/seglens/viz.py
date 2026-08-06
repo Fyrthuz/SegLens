@@ -13,6 +13,7 @@ import torch
 from torch import Tensor
 
 from seglens.lens.base import LensOutput
+from seglens.metrics import dice_score, iou_score
 
 
 def aggregate_depth_curve(
