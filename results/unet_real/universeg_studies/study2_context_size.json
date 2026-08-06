@@ -1,0 +1,38 @@
+[
+  {
+    "ctx_size": 4,
+    "channel": "g",
+    "test_dice_mean": 0.23653791371643493,
+    "test_dice_std": 0.27279978051941467,
+    "test_iou_mean": 0.16580496881053378,
+    "test_iou_std": 0.20590957593938164,
+    "time_s": 0.3
+  },
+  {
+    "ctx_size": 16,
+    "channel": "g",
+    "test_dice_mean": 0.6224086571687086,
+    "test_dice_std": 0.27051200211748416,
+    "test_iou_mean": 0.5010908325808702,
+    "test_iou_std": 0.2534604995604401,
+    "time_s": 0.3
+  },
+  {
+    "ctx_size": 32,
+    "channel": "g",
+    "test_dice_mean": 0.7185333781055959,
+    "test_dice_std": 0.20512477509822497,
+    "test_iou_mean": 0.5953129346123223,
+    "test_iou_std": 0.21957736794456895,
+    "time_s": 0.7
+  },
+  {
+    "ctx_size": 64,
+    "channel": "g",
+    "test_dice_mean": 0.7673840893941227,
+    "test_dice_std": 0.1469552551462332,
+    "test_iou_mean": 0.6424761511932274,
+    "test_iou_std": 0.1696275161750352,
+    "time_s": 1.4
+  }
+]
